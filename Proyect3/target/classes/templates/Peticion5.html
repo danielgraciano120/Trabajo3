@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Petición 5</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg,#001f3f,#003366,#005580); color:#e0f0ff; margin:0; padding:30px; }
+        h1 { color:#7ecfff; border-bottom:2px solid #1a6090; padding-bottom:10px; margin-bottom:20px; }
+        h2 { color:#ffdd66; font-size:16px; margin:20px 0 10px; }
+        .nav { margin-bottom:20px; }
+        .nav a { color:#7ecfff; margin-right:12px; text-decoration:none; border:1px solid #1a6090; padding:5px 12px; border-radius:5px; }
+        .nav a:hover { background:#1a6090; }
+        .card { background:rgba(0,80,140,0.45); border:1px solid #1a6090; border-radius:10px; padding:25px; margin-bottom:20px; }
+        .codigo { background:rgba(0,20,60,0.7); border:1px solid #1a4060; border-radius:6px; padding:12px 16px; font-family:monospace; font-size:13px; color:#88ccff; margin-bottom:15px; }
+        .resultado-central { text-align:center; padding:20px 0; }
+        .nadador-nombre { font-size:22px; font-weight:bold; color:#a8e0ff; margin-bottom:8px; }
+        .nadador-info { color:#99bbdd; font-size:14px; margin-bottom:25px; }
+        .total-circulo {
+            display:inline-block;
+            background:rgba(0,40,120,0.8);
+            border:3px solid #7ecfff;
+            border-radius:50%;
+            width:130px; height:130px;
+            line-height:1;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            margin:0 auto 10px;
+        }
+        .total-numero { font-size:38px; font-weight:bold; color:#ffdd66; }
+        .total-label { font-size:12px; color:#99bbdd; margin-top:4px; }
+        .tiempos-lista { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:15px; }
+        .tiempo-badge { background:rgba(0,50,110,0.7); border:1px solid #2a80b0; border-radius:8px; padding:8px 16px; color:#c0e0ff; font-size:14px; }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="/">Inicio</a>
+    <a href="/peticion1">P1</a><a href="/peticion2">P2</a>
+    <a href="/peticion3">P3</a><a href="/peticion4">P4</a><a href="/peticion5">P5</a>
+</div>
+
+<h1>🏆 <span th:text="${titulo}"></span></h1>
+
+<div class="card">
+    <h2>Método verTotalTiempos() en la clase Nadador</h2>
+    <div class="codigo">
+        // En la clase Nadador:<br>
+        public int verTotalTiempos(Function&lt;Nadador, Integer&gt; funcion) {<br>
+        &nbsp;&nbsp;return funcion.apply(this);<br>
+        }<br><br>
+        // Llamada desde el controller:<br>
+        Nadador nadadorElegido = jugadores.peek();<br>
+        int totalTiempos = nadadorElegido.verTotalTiempos(sumarTiempos);
+    </div>
+</div>
+
+<div class="card">
+    <div class="resultado-central">
+        <div class="nadador-nombre" th:text="${nadador.nombre}"></div>
+        <div class="nadador-info"
+             th:text="'Categoría: ' + ${nadador.categoria} + '  |  Club: ' + ${nadador.club}">
+        </div>
+        <div class="total-circulo">
+            <span class="total-numero" th:text="${totalTiempos}"></span>
+            <span class="total-label">seg totales</span>
+        </div>
+        <p style="color:#99bbdd; font-size:13px; margin-top:10px;">Suma de tiempos en las últimas 5 competencias</p>
+        <div class="tiempos-lista">
+            <span class="tiempo-badge" th:each="t : ${nadador.tiempos}" th:text="${t} + ' seg'"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

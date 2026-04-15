@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Petición 1</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg,#001f3f,#003366,#005580); color:#e0f0ff; margin:0; padding:30px; }
+        h1 { color:#7ecfff; border-bottom:2px solid #1a6090; padding-bottom:10px; margin-bottom:20px; }
+        h2 { color:#ffdd66; font-size:16px; margin:20px 0 10px; }
+        .nav { margin-bottom:20px; }
+        .nav a { color:#7ecfff; margin-right:12px; text-decoration:none; border:1px solid #1a6090; padding:5px 12px; border-radius:5px; }
+        .nav a:hover { background:#1a6090; }
+        .card { background:rgba(0,80,140,0.45); border:1px solid #1a6090; border-radius:10px; padding:20px 25px; margin-bottom:20px; }
+        table { width:100%; border-collapse:collapse; }
+        th { background:rgba(0,60,120,0.7); color:#ffdd66; padding:10px; text-align:left; }
+        td { padding:9px 10px; border-bottom:1px solid #1a4060; color:#c0e0ff; }
+        tr:hover td { background:rgba(0,100,160,0.3); }
+        .badge { display:inline-block; background:rgba(0,60,120,0.7); border:1px solid #2a80b0; border-radius:15px; padding:4px 12px; font-size:13px; color:#a8e0ff; margin:2px; }
+        .entrenador-info { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:10px; }
+        .dato { background:rgba(0,60,120,0.5); border:1px solid #2a80b0; border-radius:8px; padding:14px; text-align:center; }
+        .dato-label { color:#99bbdd; font-size:12px; display:block; margin-bottom:6px; }
+        .dato-valor { color:#7ecfff; font-size:17px; font-weight:bold; }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="/">Inicio</a>
+    <a href="/peticion1">P1</a><a href="/peticion2">P2</a>
+    <a href="/peticion3">P3</a><a href="/peticion4">P4</a><a href="/peticion5">P5</a>
+</div>
+
+<h1>🏊 <span th:text="${titulo}"></span></h1>
+
+<!-- Stack de Nadadores -->
+<div class="card">
+    <h2>📦 Stack de Nadadores (5 nadadores — Club ACUÁTICOS MEDELLÍN, Categoría JUNIOR)</h2>
+    <table>
+        <thead>
+        <tr><th>Nombre</th><th>Categoría</th><th>Club</th><th>Tiempos en competencias (seg)</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="n : ${jugadores}">
+            <td th:text="${n.nombre}"></td>
+            <td th:text="${n.categoria}"></td>
+            <td th:text="${n.club}"></td>
+            <td>
+                <span class="badge" th:each="t : ${n.tiempos}" th:text="${t} + ' seg'"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Entrenador -->
+<div class="card">
+    <h2>👨‍🏫 Entrenador asignado</h2>
+    <div class="entrenador-info">
+        <div class="dato">
+            <span class="dato-label">NOMBRE</span>
+            <span class="dato-valor" th:text="${entrenador.nombre}"></span>
+        </div>
+        <div class="dato">
+            <span class="dato-label">CATEGORÍA</span>
+            <span class="dato-valor" th:text="${entrenador.categoria}"></span>
+        </div>
+        <div class="dato">
+            <span class="dato-label">CLUB</span>
+            <span class="dato-valor" th:text="${entrenador.club}"></span>
+        </div>
+        <div class="dato">
+            <span class="dato-label">COMPETENCIAS GANADAS</span>
+            <span class="dato-valor" th:text="${entrenador.competenciasGanadas}"></span>
+        </div>
+        <div class="dato">
+            <span class="dato-label">NADADORES EN SU DEQUE</span>
+            <span class="dato-valor" th:text="${#lists.size(entrenador.jugadores)}"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Petición 2</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg,#001f3f,#003366,#005580); color:#e0f0ff; margin:0; padding:30px; }
+        h1 { color:#7ecfff; border-bottom:2px solid #1a6090; padding-bottom:10px; margin-bottom:20px; }
+        h2 { color:#ffdd66; font-size:16px; margin:20px 0 10px; }
+        .nav { margin-bottom:20px; }
+        .nav a { color:#7ecfff; margin-right:12px; text-decoration:none; border:1px solid #1a6090; padding:5px 12px; border-radius:5px; }
+        .nav a:hover { background:#1a6090; }
+        .card { background:rgba(0,80,140,0.45); border:1px solid #1a6090; border-radius:10px; padding:20px 25px; margin-bottom:20px; }
+        .tipo-tag { display:inline-block; background:rgba(0,40,100,0.7); border:1px solid #2a80b0; border-radius:5px; padding:3px 10px; font-size:12px; color:#ffdd66; margin-bottom:12px; }
+        ul { list-style:none; padding:0; }
+        ul li { padding:10px 14px; border-bottom:1px solid #1a4060; color:#c0e0ff; font-size:15px; }
+        ul li:last-child { border-bottom:none; }
+        ul li::before { content:"▸ "; color:#7ecfff; }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="/">Inicio</a>
+    <a href="/peticion1">P1</a><a href="/peticion2">P2</a>
+    <a href="/peticion3">P3</a><a href="/peticion4">P4</a><a href="/peticion5">P5</a>
+</div>
+
+<h1>🔄 <span th:text="${titulo}"></span></h1>
+
+<!-- ListIterator -->
+<div class="card">
+    <span class="tipo-tag">ListIterator — Stack de jugadores</span>
+    <h2>Nadadores recorridos con ListIterator</h2>
+    <ul>
+        <li th:each="dato : ${datosListIterator}" th:text="${dato}"></li>
+    </ul>
+</div>
+
+<!-- Iterator -->
+<div class="card">
+    <span class="tipo-tag">Iterator — Deque del entrenador</span>
+    <h2>Nadadores recorridos con Iterator (Deque del entrenador)</h2>
+    <ul>
+        <li th:each="dato : ${datosIterator}" th:text="${dato}"></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Natación - Inicio</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #001f3f 0%, #003366 50%, #005580 100%);
+            color: #e0f0ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+        .contenido { width: 100%; max-width: 750px; }
+        .header { text-align: center; margin-bottom: 45px; }
+        .header .icono { font-size: 72px; margin-bottom: 15px; }
+        .header h1 { font-size: 30px; color: #7ecfff; margin-bottom: 8px; }
+        .header p { color: #99bbdd; font-size: 15px; }
+        .cards { display: flex; flex-direction: column; gap: 14px; }
+        .card {
+            background-color: rgba(0, 80, 140, 0.5);
+            border: 1px solid #1a6090;
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+        }
+        .card:hover { background-color: rgba(0,110,180,0.6); border-color: #7ecfff; transform: translateX(6px); }
+        .card .numero {
+            background-color: rgba(0,60,120,0.7);
+            border: 2px solid #2a80b0;
+            border-radius: 50%;
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; font-weight: bold; color: #ffdd66;
+            flex-shrink: 0;
+        }
+        .card .info { flex: 1; }
+        .card .info .titulo-card { font-size: 16px; font-weight: bold; color: #a8e0ff; margin-bottom: 4px; }
+        .card .info .desc { font-size: 13px; color: #7799bb; }
+        .card .flecha { color: #2a80b0; font-size: 22px; }
+        .card:hover .flecha { color: #7ecfff; }
+        .footer { margin-top: 40px; text-align: center; color: #446688; font-size: 13px; }
+    </style>
+</head>
+<body>
+<div class="contenido">
+    <div class="header">
+        <div class="icono">🏊</div>
+        <h1>Natación — Nadadores y Entrenadores</h1>
+        <p>Proyecto Spring Boot — Selecciona una petición para ver los resultados</p>
+    </div>
+    <div class="cards">
+        <a class="card" href="/peticion1">
+            <div class="numero">1</div>
+            <div class="info">
+                <div class="titulo-card">Nadadores y Entrenador creados</div>
+                <div class="desc">5 nadadores del club Acuáticos Medellín categoría JUNIOR con sus tiempos en el Stack</div>
+            </div>
+            <span class="flecha">›</span>
+        </a>
+        <a class="card" href="/peticion2">
+            <div class="numero">2</div>
+            <div class="info">
+                <div class="titulo-card">ListIterator y Iterator</div>
+                <div class="desc">Recorrer el Stack con ListIterator y el Deque del entrenador con Iterator</div>
+            </div>
+            <span class="flecha">›</span>
+        </a>
+        <a class="card" href="/peticion3">
+            <div class="numero">3</div>
+            <div class="info">
+                <div class="titulo-card">Conversión Stack → Deque y filtro funcional</div>
+                <div class="desc">Convertir el Stack a Deque y filtrar nadadores del club POSEIDON con streams</div>
+            </div>
+            <span class="flecha">›</span>
+        </a>
+        <a class="card" href="/peticion4">
+            <div class="numero">4</div>
+            <div class="info">
+                <div class="titulo-card">Function&lt;Nadador, Integer&gt;</div>
+                <div class="desc">Función que recibe un Nadador y retorna la suma total de sus tiempos</div>
+            </div>
+            <span class="flecha">›</span>
+        </a>
+        <a class="card" href="/peticion5">
+            <div class="numero">5</div>
+            <div class="info">
+                <div class="titulo-card">verTotalTiempos() con Function</div>
+                <div class="desc">Método en Nadador que recibe la Function del punto 4 y muestra el total</div>
+            </div>
+            <span class="flecha">›</span>
+        </a>
+    </div>
+    <div class="footer">Universidad — Colecciones, Iteradores y Programación Funcional</div>
+</div>
+</body>
+</html>
